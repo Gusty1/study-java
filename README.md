@@ -5,6 +5,6 @@
 [Java 入門教程(下)](https://google.com 'Java入門教程(上')
 
 - demo: 用 java 視窗程式做的一個模擬雷電的小遊戲。
-- lecture: 課程講義。
+- lecture: java課程講義。
 - chapter: 課程練習，不一定都有做跟著做。
 - maven: maven 講義，感覺 maven 不用特別獨立一個庫，所以就放在這裡了。
