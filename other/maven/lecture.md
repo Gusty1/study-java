@@ -1,20 +1,20 @@
-# Maven依赖管理项目构建工具
+# Maven 依赖管理项目构建工具
+
+[教學影片](https://www.bilibili.com/video/BV1JN411G7gX/ '教學影片')
 
 ## 目录
 
 [TOC]
 
+## 一、Maven 简介
 
+### 1、为什么学习 Maven
 
-## 一、Maven简介
-
-### 1、为什么学习Maven
-
-#### 1.1、Maven是一个依赖管理工具
+#### 1.1、Maven 是一个依赖管理工具
 
 ①jar 包的规模
 
-随着我们使用越来越多的框架，或者框架封装程度越来越高，项目中使用的jar包也越来越多。项目中，一个模块里面用到上百个jar包是非常正常的。
+随着我们使用越来越多的框架，或者框架封装程度越来越高，项目中使用的 jar 包也越来越多。项目中，一个模块里面用到上百个 jar 包是非常正常的。
 
 比如下面的例子，我们只用到 SpringBoot、SpringCloud 框架中的三个功能：
 
@@ -153,26 +153,26 @@
 </dependency>
 ```
 
-②jar包的来源问题
+②jar 包的来源问题
 
-- 这个jar包所属技术的官网。官网通常是英文界面，网站的结构又不尽相同，甚至找到下载链接还发现需要通过特殊的工具下载。
+- 这个 jar 包所属技术的官网。官网通常是英文界面，网站的结构又不尽相同，甚至找到下载链接还发现需要通过特殊的工具下载。
 - 第三方网站提供下载。问题是不规范，在使用过程中会出现各种问题。
-  - jar包的名称
-  - jar包的版本
-  - jar包内的具体细节
+  - jar 包的名称
+  - jar 包的版本
+  - jar 包内的具体细节
 - 而使用 Maven 后，依赖对应的 jar 包能够**自动下载**，方便、快捷又规范。
 
-③jar包的导入问题
+③jar 包的导入问题
 
-在web工程中，jar包必须存放在指定位置：
+在 web 工程中，jar 包必须存放在指定位置：
 
 ![image-20231021101825708](image/image-20231021101825708.png)
 
-在使用Maven之后，通过配置依赖(jar包)的坐标，查找本地仓库中相应jar包，若本地仓库没有，则统一从镜像网站或中央仓库中下载：
+在使用 Maven 之后，通过配置依赖(jar 包)的坐标，查找本地仓库中相应 jar 包，若本地仓库没有，则统一从镜像网站或中央仓库中下载：
 
 ![image-20231021102831531](image/image-20231021102831531.png)
 
-④jar包之间的依赖
+④jar 包之间的依赖
 
 框架中使用的 jar 包，不仅数量庞大，而且彼此之间存在错综复杂的依赖关系。依赖关系的复杂程度，已经上升到了完全不能靠人力手动解决的程度。另外，jar 包之间有可能产生冲突。进一步增加了我们在 jar 包使用过程中的难度。
 
@@ -184,15 +184,15 @@
 
 而使用 Maven 则几乎不需要管理这些关系，极个别的地方调整一下即可，极大的减轻了我们的工作量。
 
-#### 1.2、Maven是一个构建工具
+#### 1.2、Maven 是一个构建工具
 
-①你没有注意过的构建
+① 你没有注意过的构建
 
 你可以不使用 Maven，但是构建必须要做。当我们使用 IDEA 进行开发时，构建是 IDEA 替我们做的。
 
 ![image-20231021103758624](image/image-20231021103758624.png)
 
-②脱离 IDE 环境仍需构建
+② 脱离 IDE 环境仍需构建
 
 ![img](image/image.png)
 
@@ -201,13 +201,13 @@
 - **管理规模庞大的 jar 包，需要专门工具。**
 - **脱离 IDE 环境执行构建操作，需要专门工具。**
 
-### 2. Maven介绍
+### 2. Maven 介绍
 
 <https://maven.apache.org/what-is-maven.html>
 
 Maven 是一款为 Java 项目管理构建、依赖管理的工具（软件），使用 Maven 可以自动化构建、测试、打包和发布项目，大大提高了开发效率和质量。
 
-Maven就是一个软件，掌握安装、配置、以及基本功能 **（项目构建、依赖管理）** 的理解和使用即可！
+Maven 就是一个软件，掌握安装、配置、以及基本功能 **（项目构建、依赖管理）** 的理解和使用即可！
 
 1. **依赖管理：**
 
@@ -221,17 +221,17 @@ Maven就是一个软件，掌握安装、配置、以及基本功能 **（项目
 
    ![](image/image_OSOE45UACw.png)
 
-**场景1：** 例如我们项目需要第三方依赖如：Druid连接池、MySQL数据库驱动和Jackson JSON等处理。那么我们可以将想要的依赖项的信息编写到Maven工程的配置文件，Maven就会自动下载并复制这些依赖项到项目中，无需自己导入jar包，管理jar!
+**场景 1：** 例如我们项目需要第三方依赖如：Druid 连接池、MySQL 数据库驱动和 Jackson JSON 等处理。那么我们可以将想要的依赖项的信息编写到 Maven 工程的配置文件，Maven 就会自动下载并复制这些依赖项到项目中，无需自己导入 jar 包，管理 jar!
 
-**场景2：** 项目完成开发，我们想要打成war部署到服务器中，使用maven的构建命令可以快速打包！节省大量时间！
+**场景 2：** 项目完成开发，我们想要打成 war 部署到服务器中，使用 maven 的构建命令可以快速打包！节省大量时间！
 
-### 3. Maven软件工作原理模型图（了解）
+### 3. Maven 软件工作原理模型图（了解）
 
 ![](image/image_6AVFQbaXLj.png)
 
-## 二、Maven安装和配置
+## 二、Maven 安装和配置
 
-### 1. Maven安装
+### 1. Maven 安装
 
 <https://maven.apache.org/docs/history.html>
 
@@ -243,7 +243,7 @@ Maven就是一个软件，掌握安装、配置、以及基本功能 **（项目
 | JDK   | 17     |
 | IDEA  | 2022.2 |
 
-**安装条件：** maven需要本机安装java环境、必需包含java\_home环境变量！
+**安装条件：** maven 需要本机安装 java 环境、必需包含 java_home 环境变量！
 
 **软件安装：** 右键解压即可（绿色免安装）
 
@@ -251,39 +251,41 @@ Maven就是一个软件，掌握安装、配置、以及基本功能 **（项目
 
 ![image-20231021110800113](image/image-20231021110800113.png)
 
-**bin**：含有Maven的运行脚本
+**bin**：含有 Maven 的运行脚本
 
-boot：含有plexus-classworlds类加载器框架
+boot：含有 plexus-classworlds 类加载器框架
 
-**conf**：含有Maven的核心配置文件
+**conf**：含有 Maven 的核心配置文件
 
-lib：含有Maven运行时所需要的Java类库
+lib：含有 Maven 运行时所需要的 Java 类库
 
-LICENSE、NOTICE、README.txt：针对Maven版本，第三方软件等简要介绍
+LICENSE、NOTICE、README.txt：针对 Maven 版本，第三方软件等简要介绍
 
-### 2. Maven环境配置
+### 2. Maven 环境配置
 
-1.  配置MAVEN_HOME
+1.  配置 MAVEN_HOME
 
     ![image-20231021110938230](image/image-20231021110938230.png)
-2.  配置Path
+
+2.  配置 Path
 
     ![](image/image_xNL5Fg_ucf.png)
-3.  命令测试（cmd窗口）
+
+3.  命令测试（cmd 窗口）
     ```bash
-    mvn -v 
+    mvn -v
     # 输出版本信息即可，如果错误，请仔细检查环境变量即可！
     ```
 
-### 3. Maven功能配置
+### 3. Maven 功能配置
 
-> 我们需要需改**maven/conf/settings.xml**配置文件，来修改maven的一些默认配置。我们主要休要修改的有三个配置：
+> 我们需要需改**maven/conf/settings.xml**配置文件，来修改 maven 的一些默认配置。我们主要休要修改的有三个配置：
 >
 > 1.依赖本地缓存位置（本地仓库位置）
 >
-> 2.maven下载镜像
+> 2.maven 下载镜像
 >
-> 3.maven选用编译项目的jdk版本
+> 3.maven 选用编译项目的 jdk 版本
 
 1.  配置本地仓库地址
     ```xml
@@ -306,7 +308,7 @@ LICENSE、NOTICE、README.txt：针对Maven版本，第三方软件等简要介�
         <mirrorOf>central</mirrorOf>
     </mirror>
     ```
-3.  配置jdk17版本项目构建
+3.  配置 jdk17 版本项目构建
     ```xml
     <!--在profiles节点(标签)下添加jdk编译版本 268行附近-->
     <profile>
@@ -323,86 +325,88 @@ LICENSE、NOTICE、README.txt：针对Maven版本，第三方软件等简要介�
     </profile>
     ```
 
-### 4. IDEA配置本地Maven软件
+### 4. IDEA 配置本地 Maven 软件
 
-> 我们需要将配置好的maven软件，配置到idea开发工具中即可！ 注意：idea工具默认自带maven配置软件，但是因为没有修改配置，建议替换成本地配置好的maven！
+> 我们需要将配置好的 maven 软件，配置到 idea 开发工具中即可！ 注意：idea 工具默认自带 maven 配置软件，但是因为没有修改配置，建议替换成本地配置好的 maven！
 
-选择本地maven软件
+选择本地 maven 软件
 
 ![image-20231021112046512](image/image-20231021112046512.png)
 
 **注意**：
 
-1、如果本地仓库地址不变化，只有一个原因，就是maven/conf/settings.xml配置文件编写错误！仔细检查即可！
+1、如果本地仓库地址不变化，只有一个原因，就是 maven/conf/settings.xml 配置文件编写错误！仔细检查即可！
 
-2、一定保证User settings file对应之前修改的settings.xml的路径，若 不一致，选中Override复选框，手动选择配置文件
+2、一定保证 User settings file 对应之前修改的 settings.xml 的路径，若 不一致，选中 Override 复选框，手动选择配置文件
 
-## 三、基于IDEA创建Maven工程
+## 三、基于 IDEA 创建 Maven 工程
 
-### 1. 概念梳理Maven工程的GAVP
+### 1. 概念梳理 Maven 工程的 GAVP
 
-Maven工程相对之前的项目，多出一组gavp属性，gav需要我们在创建项目的时候指定，p有默认值，我们先行了解下这组属性的含义：
+Maven 工程相对之前的项目，多出一组 gavp 属性，gav 需要我们在创建项目的时候指定，p 有默认值，我们先行了解下这组属性的含义：
 
-Maven 中的 GAVP 是指 GroupId、ArtifactId、Version、Packaging 等四个属性的缩写，其中前三个是必要的，而 Packaging 属性为可选项。这四个属性主要为每个项目在maven仓库中做一个标识，类似人的姓-名！有了具体标识，方便后期项目之间相互引用依赖等！
+Maven 中的 GAVP 是指 GroupId、ArtifactId、Version、Packaging 等四个属性的缩写，其中前三个是必要的，而 Packaging 属性为可选项。这四个属性主要为每个项目在 maven 仓库中做一个标识，类似人的姓-名！有了具体标识，方便后期项目之间相互引用依赖等！
 
-GAV遵循一下规则：
+GAV 遵循一下规则：
 
-​	1） **GroupID 格式**：com.{公司/BU }.业务线.\[子业务线]，最多 4 级。
+​ 1） **GroupID 格式**：com.{公司/BU }.业务线.\[子业务线]，最多 4 级。
 
-​		说明：{公司/BU} 例如：alibaba/taobao/tmall/aliexpress 等 BU 一级；子业务线可选。
+​ 说明：{公司/BU} 例如：alibaba/taobao/tmall/aliexpress 等 BU 一级；子业务线可选。
 
-​		正例：com.taobao.tddl 或 com.alibaba.sourcing.multilang
+​ 正例：com.taobao.tddl 或 com.alibaba.sourcing.multilang
 
-​	2） **ArtifactID 格式**：产品线名-模块名。语义不重复不遗漏，先到仓库中心去查证一下。
+​ 2） **ArtifactID 格式**：产品线名-模块名。语义不重复不遗漏，先到仓库中心去查证一下。
 
-​		正例：tc-client / uic-api / tair-tool / bookstore
+​ 正例：tc-client / uic-api / tair-tool / bookstore
 
-​	3） **Version版本号格式推荐**：主版本号.次版本号.修订号
+​ 3） **Version 版本号格式推荐**：主版本号.次版本号.修订号
 
-​		1） 主版本号：当做了不兼容的 API 修改，或者增加了能改变产品方向的新功能。
+​ 1） 主版本号：当做了不兼容的 API 修改，或者增加了能改变产品方向的新功能。
 
-​		2） 次版本号：当做了向下兼容的功能性新增（新增类、接口等）。
+​ 2） 次版本号：当做了向下兼容的功能性新增（新增类、接口等）。
 
-​		3） 修订号：修复 bug，没有修改方法签名的功能加强，保持 API 兼容性。
+​ 3） 修订号：修复 bug，没有修改方法签名的功能加强，保持 API 兼容性。
 
-​		例如： 初始→1.0.0  修改bug → 1.0.1  功能调整 → 1.1.1等
+​ 例如： 初始 →1.0.0 修改 bug → 1.0.1 功能调整 → 1.1.1 等
 
-**Packaging定义规则：**
+**Packaging 定义规则：**
 
-​	指示将项目打包为什么类型的文件，idea根据packaging值，识别maven项目类型！
+​ 指示将项目打包为什么类型的文件，idea 根据 packaging 值，识别 maven 项目类型！
 
-​	packaging 属性为 jar（默认值），代表普通的Java工程，打包以后是.jar结尾的文件。
+​ packaging 属性为 jar（默认值），代表普通的 Java 工程，打包以后是.jar 结尾的文件。
 
-​	packaging 属性为 war，代表Java的web工程，打包以后.war结尾的文件。
+​ packaging 属性为 war，代表 Java 的 web 工程，打包以后.war 结尾的文件。
 
-​	packaging 属性为 pom，代表不会打包，用来做继承的父工程。
+​ packaging 属性为 pom，代表不会打包，用来做继承的父工程。
 
-### 2. Idea构建Maven Java SE工程
+### 2. Idea 构建 Maven Java SE 工程
 
-注意：此处省略了version，直接给了一个默认值：**1.0-SNAPSHOT**
+注意：此处省略了 version，直接给了一个默认值：**1.0-SNAPSHOT**
 
 自己后期可以在项目中随意修改！
 
 ![image-20231021143559114](image/image-20231021143559114.png)
 
-创建工程之后，若第一次使用maven，或者使用的是新的**本地仓库**，idea右下角会出现以下进度条，表示maven正在下载相关插件，等待下载完毕，进度条消失即可
+创建工程之后，若第一次使用 maven，或者使用的是新的**本地仓库**，idea 右下角会出现以下进度条，表示 maven 正在下载相关插件，等待下载完毕，进度条消失即可
 
 ![image-20231021145024505](image/image-20231021145024505.png)
 
-验证maven工程是否创建成功，当创建完毕maven工程之后，idea中会自动打开Maven视图，如下图：
+验证 maven 工程是否创建成功，当创建完毕 maven 工程之后，idea 中会自动打开 Maven 视图，如下图：
 
 ![image-20231021145713433](image/image-20231021145713433.png)
 
-### 3. Idea构建Maven Java Web工程
+### 3. Idea 构建 Maven Java Web 工程
 
 1.  手动创建
-    1. 创建一个maven的javase工程
-    
+
+    1. 创建一个 maven 的 javase 工程
+
        ![image-20231021150134082](image/image-20231021150134082.png)
-    
-    2. 修改pom.xml文件打包方式
-    
+
+    2. 修改 pom.xml 文件打包方式
+
        修改位置：项目下/pom.xml
+
        ```xml
        <groupId>com.atguigu</groupId>
        <artifactId>maven_web</artifactId>
@@ -410,40 +414,42 @@ GAV遵循一下规则：
        <!-- 新增一列打包方式packaging -->
        <packaging>war</packaging>
        ```
-    
-    3. 设置**web资源路径**和**web.xml路径**
-    
-       点击File-->Project Structure
-    
+
+    3. 设置**web 资源路径**和**web.xml 路径**
+
+       点击 File-->Project Structure
+
        ![image-20231021151040531](image/image-20231021151040531.png)
-    
+
        ![image-20231021151627161](image/image-20231021151627161.png)
-    
+
        ![image-20231021151753318](image/image-20231021151753318.png)
-    
+
     4. 刷新和校验
-    
+
        ![image-20231021152310802](image/image-20231021152310802.png)
-    
+
        ![image-20231021151921943](image/image-20231021151921943.png)
-    
+
 2.  插件创建
-    1.  安装插件JBLJavaToWeb
+
+    1.  安装插件 JBLJavaToWeb
 
         file / settings / plugins / marketplace
 
         ![](image/image_cHUU_rABB6.png)
-    2.  创建一个javasemaven工程
-    3.  右键、使用插件快速补全web项目
+
+    2.  创建一个 javasemaven 工程
+    3.  右键、使用插件快速补全 web 项目
 
         ![](image/image_ZAPkM7VLgJ.png)
 
-### 4. Maven工程项目结构说明
+### 4. Maven 工程项目结构说明
 
 Maven 是一个强大的构建工具，它提供一种标准化的项目结构，可以帮助开发者更容易地管理项目的依赖、构建、测试和发布等任务。以下是 Maven Web 程序的文件结构及每个文件的作用：
 
 ```xml
-|-- pom.xml                               # Maven 项目管理文件 
+|-- pom.xml                               # Maven 项目管理文件
 |-- src
     |-- main                              # 项目主要代码
     |   |-- java                          # Java 源代码目录
@@ -469,15 +475,15 @@ Maven 是一个强大的构建工具，它提供一种标准化的项目结构�
         `-- resources                     # 测试资源目录
 ```
 
--   pom.xml：Maven 项目管理文件，用于描述项目的依赖和构建配置等信息。
--   src/main/java：存放项目的 Java 源代码。
--   src/main/resources：存放项目的资源文件，如配置文件、静态资源等。
--   src/main/webapp/WEB-INF：存放 Web 应用的配置文件。
--   src/main/webapp/index.jsp：Web 应用的入口页面。
--   src/test/java：存放项目的测试代码。
--   src/test/resources：存放测试相关的资源文件，如测试配置文件等。
+- pom.xml：Maven 项目管理文件，用于描述项目的依赖和构建配置等信息。
+- src/main/java：存放项目的 Java 源代码。
+- src/main/resources：存放项目的资源文件，如配置文件、静态资源等。
+- src/main/webapp/WEB-INF：存放 Web 应用的配置文件。
+- src/main/webapp/index.jsp：Web 应用的入口页面。
+- src/test/java：存放项目的测试代码。
+- src/test/resources：存放测试相关的资源文件，如测试配置文件等。
 
-## 四、基于IDEA进行Maven工程构建
+## 四、基于 IDEA 进行 Maven 工程构建
 
 ### 1. 构建概念和构建过程
 
@@ -491,17 +497,17 @@ Maven 是一个强大的构建工具，它提供一种标准化的项目结构�
 
 ### 2. 命令方式项目构建
 
-| 命令        | 描述                        |
-| ----------- | --------------------------- |
-| mvn compile | 编译项目，生成target文件    |
-| mvn package | 打包项目，生成jar或war文件  |
-| mvn clean   | 清理编译或打包后的项目结构  |
-| mvn install | 打包后上传到maven本地仓库   |
-| mvn deploy  | 只打包，上传到maven私服仓库 |
-| mvn site    | 生成站点                    |
-| mvn test    | 执行测试源码                |
+| 命令        | 描述                           |
+| ----------- | ------------------------------ |
+| mvn compile | 编译项目，生成 target 文件     |
+| mvn package | 打包项目，生成 jar 或 war 文件 |
+| mvn clean   | 清理编译或打包后的项目结构     |
+| mvn install | 打包后上传到 maven 本地仓库    |
+| mvn deploy  | 只打包，上传到 maven 私服仓库  |
+| mvn site    | 生成站点                       |
+| mvn test    | 执行测试源码                   |
 
-war包打包插件和jdk版本不匹配：pom.xml 添加以下代码即可
+war 包打包插件和 jdk 版本不匹配：pom.xml 添加以下代码即可
 
 ```xml
 <build>
@@ -535,56 +541,59 @@ mvn test
 
 注意：打包（package）和安装（install）的区别是什么
 
-打包是将工程打成jar或war文件，保存在target目录下
+打包是将工程打成 jar 或 war 文件，保存在 target 目录下
 
-安装是将当前工程所生成的jar或war文件，安装到本地仓库，会按照坐标保存到指定位置
+安装是将当前工程所生成的 jar 或 war 文件，安装到本地仓库，会按照坐标保存到指定位置
 
 ### 4. 构建插件、命令、生命周期命令之间关系
 
--   **构建生命周期**
+- **构建生命周期**
 
-    我们发现一个情况！当我们执行package命令也会自动执行compile命令！
-    ```xml
-    [INFO] --------------------------------[ jar ]---------------------------------
-    [INFO] 
-    [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mybatis-base-curd ---
-    [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ mybatis-base-curd ---
-    [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ mybatis-base-curd ---
-    [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ mybatis-base-curd ---
-    [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ mybatis-base-curd ---
-    [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ mybatis-base-curd ---
-    [INFO] Building jar: D:\javaprojects\backend-engineering\part03-mybatis\mybatis-base-curd\target\mybatis-base-curd-1.0-SNAPSHOT.jar
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  5.013 s
-    [INFO] Finished at: 2023-06-05T10:03:47+08:00
-    [INFO] ------------------------------------------------------------------------
-    ```
-    这种行为就是因为构建生命周期产生的！构建生命周期可以理解成是一组固定构建命令的有序集合，触发周期后的命令，会自动触发周期前的命令！！！
+  我们发现一个情况！当我们执行 package 命令也会自动执行 compile 命令！
 
-    **构建周期作用：会简化构建过程**
+  ```xml
+  [INFO] --------------------------------[ jar ]---------------------------------
+  [INFO]
+  [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mybatis-base-curd ---
+  [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ mybatis-base-curd ---
+  [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ mybatis-base-curd ---
+  [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ mybatis-base-curd ---
+  [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ mybatis-base-curd ---
+  [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ mybatis-base-curd ---
+  [INFO] Building jar: D:\javaprojects\backend-engineering\part03-mybatis\mybatis-base-curd\target\mybatis-base-curd-1.0-SNAPSHOT.jar
+  [INFO] ------------------------------------------------------------------------
+  [INFO] BUILD SUCCESS
+  [INFO] ------------------------------------------------------------------------
+  [INFO] Total time:  5.013 s
+  [INFO] Finished at: 2023-06-05T10:03:47+08:00
+  [INFO] ------------------------------------------------------------------------
+  ```
 
-    例如：项目打包   mvn clean package即可。&#x20;
+  这种行为就是因为构建生命周期产生的！构建生命周期可以理解成是一组固定构建命令的有序集合，触发周期后的命令，会自动触发周期前的命令！！！
 
-    主要两个构建生命周期：
-    -   清理周期：主要是对项目编译生成文件进行清理
+  **构建周期作用：会简化构建过程**
 
-        包含命令：clean&#x20;
-    
--   默认周期：定义了真正构件时所需要执行的所有步骤，它是生命周期中最核心的部分
-    
-        包含命令：compile -  test - package - install - deploy
+  例如：项目打包 mvn clean package 即可。&#x20;
 
--   **插件、命令、周期三者关系（了解）**
+  主要两个构建生命周期：
 
-    周期→包含若干命令→包含若干插件
+  - 清理周期：主要是对项目编译生成文件进行清理
 
-    使用周期命令构建，简化构建过程！
+    包含命令：clean&#x20;
 
-    最终进行构建的是插件！
+- 默认周期：定义了真正构件时所需要执行的所有步骤，它是生命周期中最核心的部分
 
-## 五、基于IDEA 进行Maven依赖管理
+      包含命令：compile -  test - package - install - deploy
+
+- **插件、命令、周期三者关系（了解）**
+
+  周期 → 包含若干命令 → 包含若干插件
+
+  使用周期命令构建，简化构建过程！
+
+  最终进行构建的是插件！
+
+## 五、基于 IDEA 进行 Maven 依赖管理
 
 ### 1. 依赖管理概念
 
@@ -594,7 +603,7 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 
 总之，Maven 的依赖管理是 Maven 软件的一个核心功能之一，使得软件包依赖的管理和使用更加智能和方便，简化了开发过程中的工作，并提高了软件质量和可维护性。
 
-### 2. Maven工程核心信息配置和解读（GAVP）
+### 2. Maven 工程核心信息配置和解读（GAVP）
 
 位置：pom.xml
 
@@ -617,14 +626,14 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 <packaging>jar/pom/war</packaging>
 ```
 
-### 3. Maven工程依赖管理配置
+### 3. Maven 工程依赖管理配置
 
 位置：pom.xml
 
 依赖管理和依赖添加
 
 ```xml
-<!-- 
+<!--
    通过编写依赖jar包的gav必要属性，引入第三方依赖！
    scope属性是可选的，可以指定依赖生效范围！
    依赖信息查询方式：
@@ -668,18 +677,18 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 
 ### 4. 依赖范围
 
-通过设置坐标的依赖范围(scope)，可以设置 对应jar包的作用范围：编译环境、测试环境、运行环境
+通过设置坐标的依赖范围(scope)，可以设置 对应 jar 包的作用范围：编译环境、测试环境、运行环境
 
-| 依赖范围     | 描述                                                         |
-| ------------ | ------------------------------------------------------------ |
-| **compile**  | 编译依赖范围，scope 元素的缺省值。使用此依赖范围的 Maven 依赖，对于三种 classpath 均有效，即该 Maven 依赖在上述三种 classpath 均会被引入。例如，log4j 在编译、测试、运行过程都是必须的。 |
-| **test**     | 测试依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath 有效。例如，Junit 依赖只有在测试阶段才需要。 |
+| 依赖范围     | 描述                                                                                                                                                                                                             |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **compile**  | 编译依赖范围，scope 元素的缺省值。使用此依赖范围的 Maven 依赖，对于三种 classpath 均有效，即该 Maven 依赖在上述三种 classpath 均会被引入。例如，log4j 在编译、测试、运行过程都是必须的。                         |
+| **test**     | 测试依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath 有效。例如，Junit 依赖只有在测试阶段才需要。                                                                                                       |
 | **provided** | 已提供依赖范围。使用此依赖范围的 Maven 依赖，只对编译 classpath 和测试 classpath 有效。例如，servlet-api 依赖对于编译、测试阶段而言是需要的，但是运行阶段，由于外部容器已经提供，故不需要 Maven 重复引入该依赖。 |
-| runtime      | 运行时依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath、运行 classpath 有效。例如，JDBC 驱动实现依赖，其在编译时只需 JDK 提供的 JDBC 接口即可，只有测试、运行阶段才需要实现了 JDBC 接口的驱动。 |
-| system       | 系统依赖范围，其效果与 provided 的依赖范围一致。其用于添加非 Maven 仓库的本地依赖，通过依赖元素 dependency 中的 systemPath 元素指定本地依赖的路径。鉴于使用其会导致项目的可移植性降低，一般不推荐使用。 |
-| import       | 导入依赖范围，该依赖范围只能与 dependencyManagement 元素配合使用，其功能是将目标 pom.xml 文件中 dependencyManagement 的配置导入合并到当前 pom.xml 的 dependencyManagement 中。 |
+| runtime      | 运行时依赖范围。使用此依赖范围的 Maven 依赖，只对测试 classpath、运行 classpath 有效。例如，JDBC 驱动实现依赖，其在编译时只需 JDK 提供的 JDBC 接口即可，只有测试、运行阶段才需要实现了 JDBC 接口的驱动。         |
+| system       | 系统依赖范围，其效果与 provided 的依赖范围一致。其用于添加非 Maven 仓库的本地依赖，通过依赖元素 dependency 中的 systemPath 元素指定本地依赖的路径。鉴于使用其会导致项目的可移植性降低，一般不推荐使用。          |
+| import       | 导入依赖范围，该依赖范围只能与 dependencyManagement 元素配合使用，其功能是将目标 pom.xml 文件中 dependencyManagement 的配置导入合并到当前 pom.xml 的 dependencyManagement 中。                                   |
 
-### 5. Maven工程依赖下载失败错误解决（重点）
+### 5. Maven 工程依赖下载失败错误解决（重点）
 
 在使用 Maven 构建项目时，可能会发生依赖项下载错误的情况，主要原因有以下几种：
 
@@ -691,9 +700,10 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 
 1.  检查网络连接和 Maven 仓库服务器状态。
 2.  确保依赖项的版本号与项目对应的版本号匹配，并检查 POM 文件中的依赖项是否正确。
-3.  清除本地 Maven 仓库缓存（lastUpdated 文件），因为只要存在lastupdated缓存文件，刷新也不会重新下载。本地仓库中，根据依赖的gav属性依次向下查找文件夹，最终删除内部的文件，刷新重新下载即可！
+3.  清除本地 Maven 仓库缓存（lastUpdated 文件），因为只要存在 lastupdated 缓存文件，刷新也不会重新下载。本地仓库中，根据依赖的 gav 属性依次向下查找文件夹，最终删除内部的文件，刷新重新下载即可！
 
-    例如： pom.xml依赖
+    例如： pom.xml 依赖
+
     ```xml
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -701,64 +711,65 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
       <version>1.2.8</version>
     </dependency>
     ```
+
     文件：
 
     ![](image/image_m3iQtBLARz.png)
 
-4. 或者可以将清除**lastUpdated文件**的操作写在一个脚本文件中，手动创建文件"clearLastUpdated.bat"，名字任意，但是后缀必须是bat，将以下内容复制到文件中
+4.  或者可以将清除**lastUpdated 文件**的操作写在一个脚本文件中，手动创建文件"clearLastUpdated.bat"，名字任意，但是后缀必须是 bat，将以下内容复制到文件中
 
-   ```bat
-   cls 
-   @ECHO OFF 
-   SET CLEAR_PATH=D: 
-   SET CLEAR_DIR=D:\maven-repository(本地仓库路径)
-   color 0a 
-   TITLE ClearLastUpdated For Windows 
-   GOTO MENU 
-   :MENU 
-   CLS
-   ECHO. 
-   ECHO. * * * *  ClearLastUpdated For Windows  * * * * 
-   ECHO. * * 
-   ECHO. * 1 清理*.lastUpdated * 
-   ECHO. * * 
-   ECHO. * 2 查看*.lastUpdated * 
-   ECHO. * * 
-   ECHO. * 3 退 出 * 
-   ECHO. * * 
-   ECHO. * * * * * * * * * * * * * * * * * * * * * * * * 
-   ECHO. 
-   ECHO.请输入选择项目的序号： 
-   set /p ID= 
-   IF "%id%"=="1" GOTO cmd1 
-   IF "%id%"=="2" GOTO cmd2 
-   IF "%id%"=="3" EXIT 
-   PAUSE 
-   :cmd1 
-   ECHO. 开始清理
-   %CLEAR_PATH%
-   cd %CLEAR_DIR%
-   for /r %%i in (*.lastUpdated) do del %%i
-   ECHO.OK 
-   PAUSE 
-   GOTO MENU 
-   :cmd2 
-   ECHO. 查看*.lastUpdated文件
-   %CLEAR_PATH%
-   cd %CLEAR_DIR%
-   for /r %%i in (*.lastUpdated) do echo %%i
-   ECHO.OK 
-   PAUSE 
-   GOTO MENU 
-   ```
+    ```bat
+    cls
+    @ECHO OFF
+    SET CLEAR_PATH=D:
+    SET CLEAR_DIR=D:\maven-repository(本地仓库路径)
+    color 0a
+    TITLE ClearLastUpdated For Windows
+    GOTO MENU
+    :MENU
+    CLS
+    ECHO.
+    ECHO. * * * *  ClearLastUpdated For Windows  * * * *
+    ECHO. * *
+    ECHO. * 1 清理*.lastUpdated *
+    ECHO. * *
+    ECHO. * 2 查看*.lastUpdated *
+    ECHO. * *
+    ECHO. * 3 退 出 *
+    ECHO. * *
+    ECHO. * * * * * * * * * * * * * * * * * * * * * * * *
+    ECHO.
+    ECHO.请输入选择项目的序号：
+    set /p ID=
+    IF "%id%"=="1" GOTO cmd1
+    IF "%id%"=="2" GOTO cmd2
+    IF "%id%"=="3" EXIT
+    PAUSE
+    :cmd1
+    ECHO. 开始清理
+    %CLEAR_PATH%
+    cd %CLEAR_DIR%
+    for /r %%i in (*.lastUpdated) do del %%i
+    ECHO.OK
+    PAUSE
+    GOTO MENU
+    :cmd2
+    ECHO. 查看*.lastUpdated文件
+    %CLEAR_PATH%
+    cd %CLEAR_DIR%
+    for /r %%i in (*.lastUpdated) do echo %%i
+    ECHO.OK
+    PAUSE
+    GOTO MENU
+    ```
 
-   ![image-20231021161615994](image/image-20231021161615994.png)
+    ![image-20231021161615994](image/image-20231021161615994.png)
 
-### 6. Maven工程Build构建配置
+### 6. Maven 工程 Build 构建配置
 
 项目构建是指将源代码、依赖库和资源文件等转换成可执行或可部署的应用程序的过程，在这个过程中包括编译源代码、链接依赖库、打包和部署等多个步骤。
 
-默认情况下，构建不需要额外配置，都有对应的缺省配置。当然了，我们也可以在pom.xml定制一些配置，来修改默认构建的行为和产物！
+默认情况下，构建不需要额外配置，都有对应的缺省配置。当然了，我们也可以在 pom.xml 定制一些配置，来修改默认构建的行为和产物！
 
 例如：
 
@@ -766,7 +777,7 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 2.  制定构建打包时，指定包含文件格式和排除文件
 3.  打包插件版本过低，配置更高版本插件
 
-构建配置是在pom.xml / build标签中指定！
+构建配置是在 pom.xml / build 标签中指定！
 
 **指定打包命名**
 
@@ -774,20 +785,20 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 <!-- 默认的打包名称：artifactid+verson.打包方式 -->
 <build>
   <finalName>定义打包名称</finalName>
-</build>  
+</build>
 ```
 
 **指定打包文件**
 
-如果在java文件夹中添加java类，会自动打包编译到classes文件夹下！
+如果在 java 文件夹中添加 java 类，会自动打包编译到 classes 文件夹下！
 
-但是在java文件夹中添加xml文件，默认不会被打包！
+但是在 java 文件夹中添加 xml 文件，默认不会被打包！
 
-默认情况下，按照maven工程结构放置的文件会默认被编译和打包！
+默认情况下，按照 maven 工程结构放置的文件会默认被编译和打包！
 
-除此之外、我们可以使用resources标签，指定要打包资源的文件夹要把哪些静态资源打包到 classes根目录下！
+除此之外、我们可以使用 resources 标签，指定要打包资源的文件夹要把哪些静态资源打包到 classes 根目录下！
 
-应用场景：mybatis中有时会将用于编写SQL语句的映射文件和mapper接口都写在src/main/java下的某个包中，此时映射文件就不会被打包，如何解决
+应用场景：mybatis 中有时会将用于编写 SQL 语句的映射文件和 mapper 接口都写在 src/main/java 下的某个包中，此时映射文件就不会被打包，如何解决
 
 ```xml
 <build>
@@ -807,9 +818,9 @@ Maven 依赖管理是 Maven 软件中最重要的功能之一。Maven 的依赖�
 
 **配置依赖插件**
 
-dependencies标签下引入开发需要的jar包！我们可以在build/plugins/plugin标签引入插件！
+dependencies 标签下引入开发需要的 jar 包！我们可以在 build/plugins/plugin 标签引入插件！
 
-常用的插件：修改jdk版本、tomcat插件、mybatis分页插件、mybatis逆向工程插件等等！
+常用的插件：修改 jdk 版本、tomcat 插件、mybatis 分页插件、mybatis 逆向工程插件等等！
 
 ```xml
 <build>
@@ -840,18 +851,18 @@ dependencies标签下引入开发需要的jar包！我们可以在build/plugins/
 </build>
 ```
 
-## 六、Maven依赖传递和依赖冲突
+## 六、Maven 依赖传递和依赖冲突
 
-### 1. Maven依赖传递特性
+### 1. Maven 依赖传递特性
 
 **概念**
 
-假如有Maven项目A，项目B依赖A，项目C依赖B。那么我们可以说 C依赖A。也就是说，依赖的关系为：C—>B—>A， 那么我们执行项目C时，会自动把B、A都下载导入到C项目的jar包文件夹中，这就是依赖的传递性。
+假如有 Maven 项目 A，项目 B 依赖 A，项目 C 依赖 B。那么我们可以说 C 依赖 A。也就是说，依赖的关系为：C—>B—>A， 那么我们执行项目 C 时，会自动把 B、A 都下载导入到 C 项目的 jar 包文件夹中，这就是依赖的传递性。
 
 **作用**
 
--   简化依赖导入过程
--   确保依赖版本正确
+- 简化依赖导入过程
+- 确保依赖版本正确
 
 **传递的原则**
 
@@ -874,21 +885,21 @@ dependencies标签下引入开发需要的jar包！我们可以在build/plugins/
 
 **依赖传递终止**
 
--   非compile范围进行依赖传递
--   使用optional配置终止传递
--   依赖冲突（传递的依赖已经存在）
+- 非 compile 范围进行依赖传递
+- 使用 optional 配置终止传递
+- 依赖冲突（传递的依赖已经存在）
 
-**案例：导入jackson依赖**
+**案例：导入 jackson 依赖**
 
-分析：jackson需要三个依赖
+分析：jackson 需要三个依赖
 
 ![](image/image_9ViibmeAvU.png)
 
-依赖传递关系：data-bind中，依赖其他两个依赖
+依赖传递关系：data-bind 中，依赖其他两个依赖
 
 ![](image/image_Wl0Lsj_BLk.png)
 
-最佳导入：直接可以导入data-bind，自动依赖传递需要的依赖
+最佳导入：直接可以导入 data-bind，自动依赖传递需要的依赖
 
 ```xml
 <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
@@ -900,31 +911,34 @@ dependencies标签下引入开发需要的jar包！我们可以在build/plugins/
 
 ```
 
-### 2. Maven依赖冲突特性
+### 2. Maven 依赖冲突特性
 
-当直接引用或者间接引用出现了相同的jar包! 这时呢，一个项目就会出现相同的重复jar包，这就算作冲突！依赖冲突避免出现重复依赖，并且终止依赖传递！
+当直接引用或者间接引用出现了相同的 jar 包! 这时呢，一个项目就会出现相同的重复 jar 包，这就算作冲突！依赖冲突避免出现重复依赖，并且终止依赖传递！
 
 ![](image/image_km7_szBRUw.png)
 
-maven自动解决依赖冲突问题能力，会按照自己的原则，进行重复依赖选择。同时也提供了手动解决的冲突的方式，不过不推荐！
+maven 自动解决依赖冲突问题能力，会按照自己的原则，进行重复依赖选择。同时也提供了手动解决的冲突的方式，不过不推荐！
 
 **解决依赖冲突（如何选择重复依赖）方式：**
 
 1.  自动选择原则
-    -   短路优先原则（第一原则）
 
-        A—>B—>C—>D—>E—>X(version 0.0.1)
+    - 短路优先原则（第一原则）
 
-        A—>F—>X(version 0.0.2)
+      A—>B—>C—>D—>E—>X(version 0.0.1)
 
-        则A依赖于X(version 0.0.2)。
-    -   依赖路径长度相同情况下，则“先声明优先”（第二原则）
+      A—>F—>X(version 0.0.2)
 
-        A—>E—>X(version 0.0.1)
+      则 A 依赖于 X(version 0.0.2)。
 
-        A—>F—>X(version 0.0.2)
+    - 依赖路径长度相同情况下，则“先声明优先”（第二原则）
 
-        在\<depencies>\</depencies>中，先声明的，路径相同，会优先选择！
+      A—>E—>X(version 0.0.1)
+
+      A—>F—>X(version 0.0.2)
+
+      在\<depencies>\</depencies>中，先声明的，路径相同，会优先选择！
+
 2.  手动排除
     ```xml
     <dependency>
@@ -946,137 +960,145 @@ maven自动解决依赖冲突问题能力，会按照自己的原则，进行重
 3.  小案例
 
     伪代码如下：
+
     ```xml
     前提：
-       A 1.1 -> B 1.1 -> C 1.1 
-       F 2.2 -> B 2.2 
-       
+       A 1.1 -> B 1.1 -> C 1.1
+       F 2.2 -> B 2.2
+
     pom声明：
        F 2.2
-       A 1.1 
+       A 1.1
     ```
+
     请问最终会导入哪些依赖和对应版本？
 
-## 七、Maven工程继承和聚合关系
+## 七、Maven 工程继承和聚合关系
 
-### 1. Maven工程继承关系
+### 1. Maven 工程继承关系
 
 1.  继承概念
 
     Maven 继承是指在 Maven 的项目中，让一个项目从另一个项目中继承配置信息的机制。继承可以让我们在多个项目中共享同一配置信息，简化项目的管理和维护工作。
-    
+
 2.  继承作用
 
     在父工程中统一管理项目中的依赖信息。
 
     它的背景是：
-    -   对一个比较大型的项目进行了模块拆分。
-    -   一个 project 下面，创建了很多个 module。
-    -   每一个 module 都需要配置自己的依赖信息。
-    
+
+    - 对一个比较大型的项目进行了模块拆分。
+    - 一个 project 下面，创建了很多个 module。
+    - 每一个 module 都需要配置自己的依赖信息。
+
     它背后的需求是：
-    
-    -   在每一个 module 中各自维护各自的依赖信息很容易发生出入，不易统一管理。
-    -   使用同一个框架内的不同 jar 包，它们应该是同一个版本，所以整个项目中使用的框架版本需要统一。
-    -   使用框架时所需要的 jar 包组合（或者说依赖信息组合）需要经过长期摸索和反复调试，最终确定一个可用组合。这个耗费很大精力总结出来的方案不应该在新的项目中重新摸索。
-        通过在父工程中为整个项目维护依赖信息的组合既保证了整个项目使用规范、准确的 jar 包；又能够将以往的经验沉淀下来，节约时间和精力。
-    
+
+    - 在每一个 module 中各自维护各自的依赖信息很容易发生出入，不易统一管理。
+    - 使用同一个框架内的不同 jar 包，它们应该是同一个版本，所以整个项目中使用的框架版本需要统一。
+    - 使用框架时所需要的 jar 包组合（或者说依赖信息组合）需要经过长期摸索和反复调试，最终确定一个可用组合。这个耗费很大精力总结出来的方案不应该在新的项目中重新摸索。
+      通过在父工程中为整个项目维护依赖信息的组合既保证了整个项目使用规范、准确的 jar 包；又能够将以往的经验沉淀下来，节约时间和精力。
+
 3.  继承语法
-    -   父工程
-        ```xml
-          <groupId>com.atguigu.maven</groupId>
-          <artifactId>pro03-maven-parent</artifactId>
-          <version>1.0-SNAPSHOT</version>
-          <!-- 当前工程作为父工程，它要去管理子工程，所以打包方式必须是 pom -->
-          <packaging>pom</packaging>
-        
-        ```
-    -   子工程
-        ```xml
-        <!-- 使用parent标签指定当前工程的父工程 -->
-        <parent>
-          <!-- 父工程的坐标 -->
-          <groupId>com.atguigu.maven</groupId>
-          <artifactId>pro03-maven-parent</artifactId>
-          <version>1.0-SNAPSHOT</version>
-        </parent>
-        
-        <!-- 子工程的坐标 -->
-        <!-- 如果子工程坐标中的groupId和version与父工程一致，那么可以省略 -->
-        <!-- <groupId>com.atguigu.maven</groupId> -->
-        <artifactId>pro04-maven-module</artifactId>
-        <!-- <version>1.0-SNAPSHOT</version> -->
-        ```
-    
+
+    - 父工程
+
+      ```xml
+        <groupId>com.atguigu.maven</groupId>
+        <artifactId>pro03-maven-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <!-- 当前工程作为父工程，它要去管理子工程，所以打包方式必须是 pom -->
+        <packaging>pom</packaging>
+
+      ```
+
+    - 子工程
+
+      ```xml
+      <!-- 使用parent标签指定当前工程的父工程 -->
+      <parent>
+        <!-- 父工程的坐标 -->
+        <groupId>com.atguigu.maven</groupId>
+        <artifactId>pro03-maven-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </parent>
+
+      <!-- 子工程的坐标 -->
+      <!-- 如果子工程坐标中的groupId和version与父工程一致，那么可以省略 -->
+      <!-- <groupId>com.atguigu.maven</groupId> -->
+      <artifactId>pro04-maven-module</artifactId>
+      <!-- <version>1.0-SNAPSHOT</version> -->
+      ```
+
 4.  父工程依赖统一管理
-    -   父工程声明版本
-        ```xml
-        <!-- 使用dependencyManagement标签配置对依赖的管理 -->
-        <!-- 被管理的依赖并没有真正被引入到工程 -->
-        <dependencyManagement>
-          <dependencies>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-core</artifactId>
-              <version>6.0.10</version>
-            </dependency>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-beans</artifactId>
-              <version>6.0.10</version>
-            </dependency>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-context</artifactId>
-              <version>6.0.10</version>
-            </dependency>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-expression</artifactId>
-              <version>6.0.10</version>
-            </dependency>
-            <dependency>
-              <groupId>org.springframework</groupId>
-              <artifactId>spring-aop</artifactId>
-              <version>6.0.10</version>
-            </dependency>
-          </dependencies>
-        </dependencyManagement>
-        ```
-    -   子工程引用版本
-        ```xml
-        <!-- 子工程引用父工程中的依赖信息时，可以把版本号去掉。  -->
-        <!-- 把版本号去掉就表示子工程中这个依赖的版本由父工程决定。 -->
-        <!-- 具体来说是由父工程的dependencyManagement来决定。 -->
+    - 父工程声明版本
+      ```xml
+      <!-- 使用dependencyManagement标签配置对依赖的管理 -->
+      <!-- 被管理的依赖并没有真正被引入到工程 -->
+      <dependencyManagement>
         <dependencies>
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <version>6.0.10</version>
           </dependency>
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <version>6.0.10</version>
           </dependency>
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>6.0.10</version>
           </dependency>
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
+            <version>6.0.10</version>
           </dependency>
           <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
+            <version>6.0.10</version>
           </dependency>
         </dependencies>
-        ```
+      </dependencyManagement>
+      ```
+    - 子工程引用版本
+      ```xml
+      <!-- 子工程引用父工程中的依赖信息时，可以把版本号去掉。  -->
+      <!-- 把版本号去掉就表示子工程中这个依赖的版本由父工程决定。 -->
+      <!-- 具体来说是由父工程的dependencyManagement来决定。 -->
+      <dependencies>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-expression</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-aop</artifactId>
+        </dependency>
+      </dependencies>
+      ```
 
-### 2. Maven工程聚合关系
+### 2. Maven 工程聚合关系
 
 1.  聚合概念
 
     Maven 聚合是指将多个项目组织到一个父级项目中，以便一起构建和管理的机制。聚合可以帮助我们更好地管理一组相关的子项目，同时简化它们的构建和部署过程。
+
 2.  聚合作用
     1.  管理多个子项目：通过聚合，可以将多个子项目组织在一起，方便管理和维护。
     2.  构建和发布一组相关的项目：通过聚合，可以在一个命令中构建和发布多个相关的项目，简化了部署和维护工作。
@@ -1085,6 +1107,7 @@ maven自动解决依赖冲突问题能力，会按照自己的原则，进行重
 3.  聚合语法
 
     父项目中包含的子项目列表。
+
     ```xml
     <project>
       <groupId>com.example</groupId>
@@ -1097,17 +1120,18 @@ maven自动解决依赖冲突问题能力，会按照自己的原则，进行重
       </modules>
     </project>
     ```
+
 4.  聚合演示
 
     通过触发父工程构建命令、引发所有子模块构建！产生反应堆！
 
-## 八、Maven私服
+## 八、Maven 私服
 
-### 1. Maven私服简介
+### 1. Maven 私服简介
 
-①私服简介
+① 私服简介
 
-Maven 私服是一种特殊的Maven远程仓库，它是架设在局域网内的仓库服务，用来代理位于外部的远程仓库（中央仓库、其他远程公共仓库）。
+Maven 私服是一种特殊的 Maven 远程仓库，它是架设在局域网内的仓库服务，用来代理位于外部的远程仓库（中央仓库、其他远程公共仓库）。
 
 > 当然也并不是说私服只能建立在局域网，也有很多公司会直接把私服部署到公网，具体还是得看公司业务的性质是否是保密的等等，因为局域网的话只能在公司用，部署到公网的话员工在家里也可以办公使用。
 
@@ -1121,38 +1145,38 @@ Maven 私服是一种特殊的Maven远程仓库，它是架设在局域网内的
 
 ![image-20231021164631791](image/image-20231021164631791.png)
 
-②Maven私服的优势
+②Maven 私服的优势
 
 1. 节省外网带宽
    消除对外部远程仓库的大量重复请求（会消耗很大量的带宽），降低外网带宽压力。
 
 2. 下载速度更快
-   Maven私服位于局域网内，从私服下载构建更快更稳定。
+   Maven 私服位于局域网内，从私服下载构建更快更稳定。
 
 3. 便于部署第三方构件
-   有些构件无法从任何一个远程仓库中获得（如：公司或组织内部的私有构件、Oracle的JDBC驱动等），建立私服之后，就可以将这些构件部署到私服中，供内部Maven项目使用。
+   有些构件无法从任何一个远程仓库中获得（如：公司或组织内部的私有构件、Oracle 的 JDBC 驱动等），建立私服之后，就可以将这些构件部署到私服中，供内部 Maven 项目使用。
 
 4. 提高项目的稳定性，增强对项目的控制
-   如果不建立私服，那么Maven项目的构件就高度依赖外部的远程仓库，若外部网络不稳定，则项目的构建过程也会变得不稳定。建立私服后，即使外部网络状况不佳甚至中断，只要私服中已经缓存了所需的构件，Maven也能够正常运行。私服软件（如：Nexus）提供了很多控制功能（如：权限管理、RELEASE/SNAPSHOT版本控制等），可以对仓库进行一些更加高级的控制。
+   如果不建立私服，那么 Maven 项目的构件就高度依赖外部的远程仓库，若外部网络不稳定，则项目的构建过程也会变得不稳定。建立私服后，即使外部网络状况不佳甚至中断，只要私服中已经缓存了所需的构件，Maven 也能够正常运行。私服软件（如：Nexus）提供了很多控制功能（如：权限管理、RELEASE/SNAPSHOT 版本控制等），可以对仓库进行一些更加高级的控制。
 
 5. 降低中央仓库得负荷压力
    由于私服会缓存中央仓库得构件，避免了很多对中央仓库的重复下载，降低了中央仓库的负荷。
 
-③常见的Maven私服产品
+③ 常见的 Maven 私服产品
 
-1. Apache的Archiva
-2. JFrog的Artifactory
-3. Sonatype的Nexus（[ˈneksəs]）（当前最流行、使用最广泛）
+1. Apache 的 Archiva
+2. JFrog 的 Artifactory
+3. Sonatype 的 Nexus（[ˈneksəs]）（当前最流行、使用最广泛）
 
-### 2. Nexus下载安装
+### 2. Nexus 下载安装
 
 下载地址：https://help.sonatype.com/repomanager3/product-information/download
 
-解压，以管理员身份打开CMD，进入bin目录下，执行./nexus /run命令启动
+解压，以管理员身份打开 CMD，进入 bin 目录下，执行./nexus /run 命令启动
 
 访问 Nexus 首页
 
-首页地址：http://localhost:8081/，8081为默认端口号
+首页地址：http://localhost:8081/，8081 为默认端口号
 
 ![images](image/img001.612496a3.png)
 
@@ -1183,7 +1207,7 @@ Maven 私服是一种特殊的Maven远程仓库，它是架设在局域网内的
 
 ![image-20231031171708085](image/image-20231031171708085.png)
 
-### 4. Nexus上的各种仓库
+### 4. Nexus 上的各种仓库
 
 ![images](image/img009.7f737ed7.png)
 
@@ -1193,11 +1217,11 @@ Maven 私服是一种特殊的Maven远程仓库，它是架设在局域网内的
 | group    | 存放：通过 Nexus 获取的第三方 jar 包           |
 | hosted   | 存放：本团队其他开发人员部署到 Nexus 的 jar 包 |
 
-| 仓库名称        | 说明                                                         |
-| --------------- | ------------------------------------------------------------ |
-| maven-central   | Nexus 对 Maven 中央仓库的代理                                |
-| maven-public    | Nexus 默认创建，供开发人员下载使用的组仓库                   |
-| maven-releases  | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 releases 版本 |
+| 仓库名称        | 说明                                                                    |
+| --------------- | ----------------------------------------------------------------------- |
+| maven-central   | Nexus 对 Maven 中央仓库的代理                                           |
+| maven-public    | Nexus 默认创建，供开发人员下载使用的组仓库                              |
+| maven-releases  | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 releases 版本  |
 | maven-snapshots | Nexus 默认创建，供开发人员部署自己 jar 包的宿主仓库 要求 snapshots 版本 |
 
 初始状态下，这几个仓库都没有内容：
@@ -1206,7 +1230,7 @@ Maven 私服是一种特殊的Maven远程仓库，它是架设在局域网内的
 
 ### 5. 通过 Nexus 下载 jar 包
 
-修改本地maven的核心配置文件settings.xml，设置新的本地仓库地址
+修改本地 maven 的核心配置文件 settings.xml，设置新的本地仓库地址
 
 ```xml
 <!-- 配置一个新的 Maven 本地仓库 -->
@@ -1273,7 +1297,7 @@ mvn clean compile
 
 ### 6. 将 jar 包部署到 Nexus
 
-maven工程中配置：
+maven 工程中配置：
 
 ```xml
 <distributionManagement>
@@ -1299,24 +1323,13 @@ mvn deploy
 > Uploaded to nexus-mine: http://localhost:8081/repository/maven-snapshots/com/atguigu/demo/demo07-redis-data-provider/maven-metadata.xml (300 B at 6.5 kB/s)
 > [INFO] ------------------------------------------------------------------------
 > [INFO] Reactor Summary:
-> [INFO]
-> [INFO] demo-imperial-court-ms-show 1.0-SNAPSHOT ........... SUCCESS [ 1.875 s]
-> [INFO] demo09-base-entity ................................. SUCCESS [ 21.883 s]
-> [INFO] demo10-base-util ................................... SUCCESS [ 0.324 s]
-> [INFO] demo08-base-api .................................... SUCCESS [ 1.171 s]
-> [INFO] demo01-imperial-court-gateway ...................... SUCCESS [ 0.403 s]
-> [INFO] demo02-user-auth-center ............................ SUCCESS [ 2.932 s]
-> [INFO] demo03-emp-manager-center .......................... SUCCESS [ 0.312 s]
-> [INFO] demo04-memorials-manager-center .................... SUCCESS [ 0.362 s]
-> [INFO] demo05-working-manager-center ...................... SUCCESS [ 0.371 s]
-> [INFO] demo06-mysql-data-provider ......................... SUCCESS [ 6.779 s]
-> [INFO] demo07-redis-data-provider 1.0-SNAPSHOT ............ SUCCESS [ 0.273 s]
+> [INFO] > [INFO] demo-imperial-court-ms-show 1.0-SNAPSHOT ........... SUCCESS [ 1.875 s] > [INFO] demo09-base-entity ................................. SUCCESS [ 21.883 s] > [INFO] demo10-base-util ................................... SUCCESS [ 0.324 s] > [INFO] demo08-base-api .................................... SUCCESS [ 1.171 s] > [INFO] demo01-imperial-court-gateway ...................... SUCCESS [ 0.403 s] > [INFO] demo02-user-auth-center ............................ SUCCESS [ 2.932 s] > [INFO] demo03-emp-manager-center .......................... SUCCESS [ 0.312 s] > [INFO] demo04-memorials-manager-center .................... SUCCESS [ 0.362 s] > [INFO] demo05-working-manager-center ...................... SUCCESS [ 0.371 s] > [INFO] demo06-mysql-data-provider ......................... SUCCESS [ 6.779 s] > [INFO] demo07-redis-data-provider 1.0-SNAPSHOT ............ SUCCESS [ 0.273 s]
 
 ![images](image/img015.b413af9d.png)
 
 ### 7. 引用别人部署的 jar 包
 
-maven工程中配置：
+maven 工程中配置：
 
 ```xml
 <repositories>
@@ -1334,7 +1347,7 @@ maven工程中配置：
 </repositories>
 ```
 
-## 九、Maven综合案例
+## 九、Maven 综合案例
 
 ### 1. 项目需求和结构分析
 
@@ -1345,12 +1358,12 @@ maven工程中配置：
 项目架构：
 
 1. 用户服务：负责处理用户相关的逻辑，例如用户信息的管理、用户注册、登录等。
-   - spring-context 6.0.6 
+   - spring-context 6.0.6
    - spring-core 6.0.6
    - spring-beans 6.0.6
    - common-service
 2. 订单服务：负责处理订单相关的逻辑，例如订单的创建、订单支付、退货、订单查看等。
-   - spring-context 6.0.6 
+   - spring-context 6.0.6
    - spring-core 6.0.6
    - spring-beans 6.0.6
    - spring-security 6.0.6
@@ -1361,13 +1374,13 @@ maven工程中配置：
 
 ### 2. 项目搭建和统一构建
 
-#### ①父模块 (micro-shop)
+#### ① 父模块 (micro-shop)
 
 创建工程：
 
 ![image-20231023112630117](image/image-20231023112630117.png)
 
-pom.xml配置：
+pom.xml 配置：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1442,9 +1455,9 @@ pom.xml配置：
 </project>
 ```
 
-可选操作：删除src目录
+可选操作：删除 src 目录
 
-#### ②通用模块 (common-service)
+#### ② 通用模块 (common-service)
 
 创建工程：
 
@@ -1452,7 +1465,7 @@ pom.xml配置：
 
 ![image-20231023114649705](image/image-20231023114649705.png)
 
-pom.xml配置：
+pom.xml 配置：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1503,7 +1516,7 @@ pom.xml配置：
 </project>
 ```
 
-#### ③用户模块 (user-service)
+#### ③ 用户模块 (user-service)
 
 创建工程：
 
@@ -1511,7 +1524,7 @@ pom.xml配置：
 
 ![image-20231023115707282](image/image-20231023115707282.png)
 
-pom.xml配置：
+pom.xml 配置：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1551,13 +1564,13 @@ pom.xml配置：
 
 ![image-20231023120621402](image/image-20231023120621402.png)
 
-#### ④订单模块 (order-service)
+#### ④ 订单模块 (order-service)
 
-创建工程，并使用插件转为web工程：
+创建工程，并使用插件转为 web 工程：
 
 ![image-20231023120733029](image/image-20231023120733029.png)
 
-pom.xml配置：
+pom.xml 配置：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1593,7 +1606,7 @@ pom.xml配置：
 </project>
 ```
 
-此时，查看父工程的pom.xml，会发现其中已经自动聚合了子工程：
+此时，查看父工程的 pom.xml，会发现其中已经自动聚合了子工程：
 
 ```xml
 <modules>
