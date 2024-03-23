@@ -27,7 +27,7 @@ VMware 預設可能沒有裝==open-vm-tools==，這是一個可以讓你的虛�
 免費版有分 xshell 和 ftp，我想付錢版應該是有把這 2 個整合在一起的，免費版沒有，所以才要分 2 個下載。
 [Xshell 下載](https://www.netsarang.com/en/free-for-home-school/ 'Xshell下載')
 
-## ubuntu 安裝問題說明
+## ubuntu 安裝
 
 影片是使用 centos，但 ubuntu 使用率也不低，各個版本的使用率如下表，所以我想 ubuntu 也是有必要了解的。
 ![linux市場佔有率](images/linux_market.png 'linux市場佔有率')
@@ -38,7 +38,23 @@ VMware 預設可能沒有裝==open-vm-tools==，這是一個可以讓你的虛�
   ==在設定 root 密碼時，若密碼太簡單會一直提示你不行，但其實可以不用理他，就繼續打你的密碼就好，因為 root 就是老大。==
   [ubuntu root 登入](https://zhuanlan.zhihu.com/p/355555221 'ubuntu root登入')
 
-## 其它
+- ubuntu 預設是沒有裝 vim、ifconfig 功能的，需要自己手動安裝。
 
-apt update，可以安裝工具和檢查更新，我覺得滿有用的。
-[apt update](https://foreachsam.github.io/book-util-apt/book/content/command/apt/apt-update/ 'apt upadte')
+```text
+apt install vim
+apt install net-tools
+```
+
+- 可以安裝工具和檢查更新，我覺得滿有用的。
+  [apt update](https://foreachsam.github.io/book-util-apt/book/content/command/apt/apt-update/ 'apt update')
+
+## centos 安裝
+
+影片中是使用 centos7，最新的是 centos9，然後 centos7、8 到 2024 年 7 月就會停止支援了，所以我是裝 centos9，安裝幾乎跟 centos7 差不多，就些微不一樣。
+[centos9 安裝](https://blog.csdn.net/mrathena/article/details/132379830 'centos9安裝')
+
+centos 創建使用者，是不能使用 sudo 功能的，需要額外設定。
+[一般使用者設定 sudo](https://zhuanlan.zhihu.com/p/143388819 '一般使用者設定sudo')
+
+centos 的安裝是用 yum，基本功能是跟 apt 一樣。
+[yum 設定更新](https://www.vixual.net/blog/archives/101 'yum設定更新')
