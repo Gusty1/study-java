@@ -13,3 +13,6 @@
   - concept: 一些設計、開發觀念
   - maven: 學習 maven
   - linux: 學習 linux
+  - html/css: 學習html&css
+  - less: 學習less
+  - promise: 學習promise
