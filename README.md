@@ -10,9 +10,3 @@
 - lecture: java 課程講義。
 - chapter: 課程練習，就很隨緣的跟著影片做。
 - other: 其他的學習講義，感覺額外開一個庫很多餘，就都放在這邊了。
-  - concept: 一些設計、開發觀念
-  - maven: 學習 maven
-  - linux: 學習 linux
-  - html/css: 學習html&css
-  - less: 學習less
-  - promise: 學習promise
