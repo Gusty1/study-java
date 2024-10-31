@@ -1,5 +1,7 @@
 # 1. 基础准备
 
+[其他參考資料](https://hackmd.io/@johnsonnote/webdesign/https%3A%2F%2Fhackmd.io%2F%40johnsonnote%2Fcsharp_basic '其他參考資料')
+
 ## 1.1 .Net 相关概念
 
 ​ .Net：是一种用于构建多种应用的免费开源开发平台，可以在其平台上支持各种语言进行开发。.Net 是.Net 系列开发框架的总称。包含.NET Framework、.Net Core 、Xamarin.
