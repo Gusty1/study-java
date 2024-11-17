@@ -1,6 +1,6 @@
 # Maven 依赖管理项目构建工具
 
-[教學影片](https://www.bilibili.com/video/BV1JN411G7gX/ '教學影片')
+[課程影片](https://www.bilibili.com/video/BV1JN411G7gX/ '課程影片')
 
 ## 目录
 

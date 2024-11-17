@@ -1,12 +1,6 @@
 # 第一章 Linux 入门
 
-## 学习目标
-
--   了解Linux 是什么
--   了解Linux的历史
--   了解 Linux 的特点
--   了解 Linux的应用场景
--   熟悉 Linux的常见版本
+[課程影片](https://www.bilibili.com/video/BV19W4y1w7cM/?vd_source=aff2c79bf7cf75bc493437621849a68d '課程影片')
 
 # 第一节 Linux是什么
 
