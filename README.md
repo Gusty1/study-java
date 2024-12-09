@@ -13,3 +13,4 @@
     - linux: linux相關的講義
     - C#: C#相關的講義
     - maven: maven相關的講義
+	- kafka: kafka相關講義
